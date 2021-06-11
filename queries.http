@@ -1,0 +1,14 @@
+GET http://localhost:8080/odata/v4/CatalogService/Books?$top=11
+
+###
+POST http://localhost:8080/odata/v4/CatalogService/Books
+Content-Type: application/json
+
+{"ID" : 11 , "title":"posting from rest client" ,"stock":400 , "author_ID":101}
+
+###
+
+POST http://localhost:8080/odata/v4/CatalogService/Orders
+Content-Type: application/json
+
+{"book_ID" : 11 , "quantity":10}
