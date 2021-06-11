@@ -40,7 +40,8 @@ Command   | Purpose
 `npm install --save-dev @sap/hdi-deploy`  | Add the required node dependency
 
 Add `{ "hana" : { "deploy-format": "hdbtable" } }` in  `.cdsrc.json` in the root folder As an effect, `.hdbtable and .hdbview` files are generated in the (gen/)db/src/gen/ folder.
-`cds deploy --to hana:bookstore-hana`  | This will create an SAP HANA service instance and implicitly push all artifacts to the database 
+
+`cds deploy --to hana:bookstore-hana`  | This will create an SAP HANA service instance and implicitly push all artifacts to the database (cf login to the api end point required)
 
 -Edit the pom.xml in the srv directory (not the pom.xml file located in the root project folder) and add the following dependency under the `<dependencies>`
  -This dependency will bring the ability to read SAP HANA service bindings from the default-env.json to automatically configure the SAP HANA connectivity. In addition, it includes the SAP HANA JDBC driver.
@@ -61,15 +62,19 @@ Add `{ "hana" : { "deploy-format": "hdbtable" } }` in  `.cdsrc.json` in the root
     </dependency>
 
 -add manifest.yml
-             ` ---
+```yaml
+            ---
               applications:
               - name: <name>
                 path: srv/target/<name>.jar
                 random-route: true
                 services:
                 - <hana service name example bookstore-hana from the above command>`
--'mvn clean install'
--'cf push'
+```
+  
+-`mvn clean install`
+
+-`cf push` (cf login to the api end point required)
   
 
 
