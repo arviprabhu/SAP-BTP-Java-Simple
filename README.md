@@ -35,7 +35,7 @@ Command   | Purpose
   - then try cds deploy --to sqlite
 
 
-### Using HanaDB
+## Using HanaDB
 
 `npm install --save-dev @sap/hdi-deploy`  | Add the required node dependency
 
