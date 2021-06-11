@@ -61,13 +61,13 @@ Add `{ "hana" : { "deploy-format": "hdbtable" } }` in  `.cdsrc.json` in the root
     </dependency>
 
 -add manifest.yml
-              ---
+             ` ---
               applications:
               - name: <name>
                 path: srv/target/<name>.jar
                 random-route: true
                 services:
-                - <hana service name example bookstore-hana from the above command>
+                - <hana service name example bookstore-hana from the above command>`
 -'mvn clean install'
 -'cf push'
   
