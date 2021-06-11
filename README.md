@@ -43,7 +43,7 @@ Command   | Purpose
 `cds deploy --to hana:bookstore-hana`  | Create an SAP HANA service instance and implicitly push all artifacts to the database 
 
 -Edit the pom.xml in the srv directory (not the pom.xml file located in the root project folder) and add the following dependency under the <dependencies>
-   -This dependency will bring the ability to read SAP HANA service bindings from the default-env.json to automatically configure the SAP HANA connectivity. In addition, it includes the SAP HANA JDBC driver.
+ -This dependency will bring the ability to read SAP HANA service bindings from the default-env.json to automatically configure the SAP HANA connectivity. In addition, it includes the SAP HANA JDBC driver.
   
 <dependency>
   <groupId>com.sap.cds</groupId>
@@ -52,14 +52,16 @@ Command   | Purpose
 
   
 `mvn spring-boot:run -Dspring-boot.run.profiles=cloud` | Run in Cloud profile
+
 -The dependency will bring the ability to read service bindings from Cloud Foundry’s VCAP_SERVICES environment variable.
  
     <dependency>
         <groupId>com.sap.cds</groupId>
         <artifactId>cds-feature-cloudfoundry</artifactId>
     </dependency>
- 'mvn clean install'
- 'cf push'
+
+ -'mvn clean install'
+ -'cf push'
   
 
 
