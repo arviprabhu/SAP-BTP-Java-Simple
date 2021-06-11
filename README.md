@@ -35,6 +35,30 @@ Command   | Purpose
   - then try cds deploy --to sqlite
 
 
+### Using HanaDB
+
+`npm install --save-dev @sap/hdi-deploy`  | Add the required node dependency
+
+`{ "hana" : { "deploy-format": "hdbtable" } }` |  `.cdsrc.json` in the root folder As an effect, `.hdbtable and .hdbview` files are generated in the (gen/)db/src/gen/ folder.
+`cds deploy --to hana:bookstore-hana`  | Create an SAP HANA service instance and implicitly push all artifacts to the database 
+
+-Edit the pom.xml in the srv directory (not the pom.xml file located in the root project folder) and add the following dependency under the <dependencies>
+<dependency>
+  <groupId>com.sap.cds</groupId>
+  <artifactId>cds-feature-hana</artifactId>
+</dependency>
+ -The dependency will bring the ability to read SAP HANA service bindings from the default-env.json to automatically configure the SAP HANA connectivity. In addition, it includes the SAP HANA JDBC driver.
+  
+`mvn spring-boot:run -Dspring-boot.run.profiles=cloud` | Run in Cloud profile
+-The dependency will bring the ability to read service bindings from Cloud Foundry’s VCAP_SERVICES environment variable.
+ 
+    <dependency>
+        <groupId>com.sap.cds</groupId>
+        <artifactId>cds-feature-cloudfoundry</artifactId>
+    </dependency>
+ 'mvn clean install'
+ 'cf push'
+  
 
 
 ## Learn More
